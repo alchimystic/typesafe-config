@@ -184,6 +184,12 @@ akka-hbase-persistence-replay-dispatcher {
   }
   throughput = 200
 }
+
+map {
+	foo = "a"
+	bar = "b"
+	foobar = "c"
+}
 `
 
 func main() {
@@ -202,5 +208,6 @@ func main() {
 		fmt.Println(conf.GetArray("akka.cluster.roles"))
 		fmt.Println(conf.GetString("akka-hbase-persistence-replay-dispatcher.executor"))
 		fmt.Println(conf.GetFloat("akka-hbase-persistence-replay-dispatcher.thread-pool-executor.core-pool-size-factor"))
+		fmt.Println(conf.GetMapKeys("map"))
 	}
 }
