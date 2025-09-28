@@ -348,3 +348,24 @@ func (c *Config) GetArray(path string) (vals []*Config, err error) {
 	}
 	return
 }
+
+func (c *Config) GetMapKeys(path string) ([]string, error) {
+	base, err := c.GetValue(path)
+
+	if err != nil {
+		return nil, err
+	}
+
+	if base.root.Type() == NodeMap {
+		node, _ := base.root.(*MapNode)
+		result := make([]string, len(node.Nodes))
+		i := 0
+		for k, _ := range node.Nodes {
+			result[i] = k
+			i++
+		}
+		return result, nil
+	}
+
+	return nil, errors.New("not a map: " + path)
+}

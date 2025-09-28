@@ -50,6 +50,7 @@ The following methods exist for manually accessing config values.
  - GetArray
  - GetDuration
  - GetDefaultDuration
+ - GetMapKeys
 
  
 ### Envs
